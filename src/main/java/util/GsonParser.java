@@ -7,7 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class JsonParser {
+public class GsonParser {
+
     public ConfigBean parse() throws FileNotFoundException {
         Gson gson=new Gson();
         ConfigBean config=gson.fromJson(new FileReader("Config.json"),ConfigBean.class);

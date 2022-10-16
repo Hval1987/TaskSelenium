@@ -1,24 +1,30 @@
 package page;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 
 public class PageStart {
-    @BeforeTest
-    public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("-private");
-        System.setProperty("webdriver.chrome.driver","src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.get("https://yandex.by/");
+
+    public WebDriver driver;
+
+    public PageStart(WebDriver driver) {
+        PageFactory.initElements(driver,this);
+        this.driver=driver;
 
     }
+
+    @FindBy(xpath="//input[contains(@class,'search3__input')]")
+    private WebElement inputField;
+
+    public void inputAndFind(String input){
+        inputField.sendKeys(input, Keys.ENTER);
+    }
+
+
 
 
 
