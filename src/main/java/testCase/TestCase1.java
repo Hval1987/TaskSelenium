@@ -17,7 +17,7 @@ public class TestCase1 {
         System.setProperty("webdriver.chrome.driver","src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.get("https://yandex.by/");
+        driver.get("https://store.steampowered.com ");
         driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(10));
 
     }

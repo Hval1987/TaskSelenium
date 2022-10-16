@@ -1,5 +1,6 @@
 {
-  "URL": "source"
+  "URL": "source",
+  "START_PAGE":"https://yandex.by/"
 
 
 }

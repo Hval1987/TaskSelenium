@@ -17,11 +17,11 @@ public class PageStart {
 
     }
 
-    @FindBy(xpath="//input[contains(@class,'search3__input')]")
-    private WebElement inputField;
+    @FindBy(xpath="//*[@id='global_header']/div/div[2]/a[3]")
+    private WebElement buttonAbout;
 
-    public void inputAndFind(String input){
-        inputField.sendKeys(input, Keys.ENTER);
+    public void clickButtonABOUT(String input){
+        buttonAbout.click();
     }
 
 
