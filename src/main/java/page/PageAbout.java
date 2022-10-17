@@ -18,6 +18,7 @@ public class PageAbout {
     public int getAmountOfPlayers(WebElement element){
 
         String str=element.getText();
+        System.out.println(str);
         //парсим в инт
 
         return 0;

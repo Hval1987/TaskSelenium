@@ -20,7 +20,7 @@ public class PageStart {
     @FindBy(xpath="//*[@id='global_header']/div/div[2]/a[3]")
     private WebElement buttonAbout;
 
-    public void clickButtonABOUT(String input){
+    public void clickButtonABOUT(){
         buttonAbout.click();
     }
 
