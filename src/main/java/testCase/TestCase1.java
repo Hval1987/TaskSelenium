@@ -3,6 +3,8 @@ package testCase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -13,6 +15,8 @@ import java.time.Duration;
 
 public class TestCase1 {
     WebDriver driver;
+    private PageStart pageStart;
+    private PageAbout pageAbout;
     @BeforeTest
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
@@ -22,17 +26,19 @@ public class TestCase1 {
         driver.manage().window().maximize();
         driver.get("https://store.steampowered.com ");
         driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(10));
+        pageStart=new PageStart(driver);
+        pageAbout=new PageAbout(driver);
 
     }
 
     @Test
     public void Test1(){
-        PageStart ps=new PageStart(driver);
-        ps.clickButtonABOUT();
+
+        pageStart.clickButtonABOUT();
         System.out.println("test run");
-        String actualTittle=ps.driver.getTitle();
+        String actualTittle=pageStart.driver.getTitle();
         Assert.assertEquals(actualTittle,"Steam — превосходная игровая Интернет-платформа");
-        PageAbout pageAbout=new PageAbout(driver);
+        pageAbout.goHome();
 
     }
 }
