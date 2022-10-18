@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.RegExParser;
 
 import java.awt.event.MouseEvent;
 import java.time.Duration;
@@ -20,26 +21,38 @@ public class PageAbout {
         this.driver = driver;
     }
 
-    @FindBy(xpath = "//div[@class='online_stat_label gamers_online']")
-    WebElement amountOfPlayersOnline;
+    @FindBy(xpath = "//*[@id=\"about_greeting\"]/div[3]/div[1]")
+    WebElement amountOfPlayersTotal;
+
+    @FindBy(xpath = "//*[@id=\"about_greeting\"]/div[3]/div[2]")
+    private WebElement amountOfPlayersOnline;
 
     @FindBy(xpath = "/html/body/div[1]/div[4]/div/div[2]/a")
-
     private WebElement buttonHome;
 
-    public int getAmountOfPlayers(WebElement element) {
+    public Long getAmountOfPlayers() {
 
-        String str = element.getText();
-        System.out.println(str);
-        //парсим в инт
-
-        return 0;
+        String str = amountOfPlayersTotal.getText();
+        RegExParser regEx = new RegExParser();
+        Long findedValue = Long.parseLong(regEx.getTegTextValue(str));
+        System.out.println("long value -->" + findedValue);
+        return findedValue;
     }
+
+    public Long getAmountOfPlayersOnline() {
+
+        String str = amountOfPlayersOnline.getText();
+        RegExParser regEx = new RegExParser();
+        Long findedValue = Long.parseLong(regEx.getTegTextValue(str));
+        System.out.println("long value -->" + findedValue);
+        return findedValue;
+    }
+
 
     public void goHome() {
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //        wait.until(ExpectedConditions.visibilityOf(buttonHome));
-        Actions actions=new Actions(driver);
+        Actions actions = new Actions(driver);
 
         actions.contextClick(buttonHome).release().build().perform();
 //        buttonHome.click();
