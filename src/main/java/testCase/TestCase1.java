@@ -23,26 +23,31 @@ public class TestCase1 {
 
     @BeforeTest
     public void setUp() {
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("-private");
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         pageStart = new PageStart(driver);
         pageAbout = new PageAbout(driver);
-        pageHeader=new PageHeader(driver);
+
+        pageHeader = new PageHeader(driver);
+
 
     }
 
     @AfterTest
     public void tearsDown() {
 
-       // driver.quit();
+        // driver.quit();
     }
 
-
+    @Test(groups = {"Test1"})
     public void Test1() {
 
 //step1
@@ -63,11 +68,15 @@ public class TestCase1 {
 
 
     }
-    @Test
-    public void Test2(){
- //step1
+
+    @Test(groups = {"Test2"})
+    public void Test2() {
+        //step1
         driver.get("https://store.steampowered.com ");
         pageHeader.hoverCursorToNew();
+
+        //step2
+        pageHeader.selectTopSellers();
 
     }
 

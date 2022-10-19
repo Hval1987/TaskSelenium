@@ -1,5 +1,6 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,6 +29,9 @@ public class PageHeader {
     @FindBy(xpath="//*[@class='tab  flyout_tab focus ']")
     private WebElement isVisiblyMenu;
 
+    @FindBy(xpath = "//a[contains(text(),'Лидеры продаж')][1]")
+    private WebElement buttonTopSellers;
+
 
 
     public void goMainPage() {
@@ -42,8 +46,12 @@ public class PageHeader {
         Actions actions=new Actions(driver);
         actions.moveToElement(newAndNoteworthy).build().perform();
 //        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.visibilityOf(isVisiblyMenu));
-
+//        wait.until(ExpectedConditions
+//                .presenceOfElementLocated(By.xpath("//*[@class='tab  flyout_tab focus ']")));
+//        System.out.println("@&^(#Q!");
+    }
+    public void selectTopSellers(){
+        ActionOnPage.selectItem(buttonTopSellers);
     }
 
 }

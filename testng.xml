@@ -2,14 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="D:/Java course/Task1_Selenium">
+        <groups>
+            <run>
+                <include name="Test2"/>
+            </run>
+        </groups>
+
         <classes>
             <class name="testCase.TestCase1">
-                <methods>
-
-
-                    <include name="Test2"/>
-                </methods>
+                
             </class>
         </classes>
+
     </test>
 </suite>
