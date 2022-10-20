@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -89,10 +87,13 @@ public class TestCase1 {
 
         Assert.assertEquals(criteriaOfCheck, "tab_filter_control tab_filter_control_include  checked");
  //step4
-        pageSearchResult.selectCheckBoxPlayerAmount();
-
-        //step5
-        pageSearchResult.selecCheckboxTags();
+        pageSearchResult.selectHideCheckBoxPlayerAmount();
+//
+//        //step5
+//        //pageSearchResult.inputSuggestionTag();
+//        WebElement element1=driver.findElement(By.xpath("//input[@id='TagSuggest']"));
+//
+//        //pageSearchResult.selectCheckboxTags();
 
     }
 
