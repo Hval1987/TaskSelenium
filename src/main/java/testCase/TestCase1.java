@@ -1,6 +1,8 @@
 package testCase;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +13,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import page.PageAbout;
 import page.PageHeader;
+import page.PageSearchResult;
 import page.PageStart;
 
 import java.time.Duration;
@@ -20,6 +23,7 @@ public class TestCase1 {
     private PageStart pageStart;
     private PageAbout pageAbout;
     private PageHeader pageHeader;
+    private PageSearchResult pageSearchResult;
 
     @BeforeTest
     public void setUp() {
@@ -35,8 +39,8 @@ public class TestCase1 {
 
         pageStart = new PageStart(driver);
         pageAbout = new PageAbout(driver);
-
         pageHeader = new PageHeader(driver);
+        pageSearchResult = new PageSearchResult(driver);
 
 
     }
@@ -47,7 +51,7 @@ public class TestCase1 {
         // driver.quit();
     }
 
-    @Test(groups = {"Test1"})
+    //  @Test(groups = {"Test1"})
     public void Test1() {
 
 //step1
@@ -77,6 +81,18 @@ public class TestCase1 {
 
         //step2
         pageHeader.selectTopSellers();
+
+        //step3
+        pageSearchResult.selectCheckboxOS();
+        WebElement element = driver.findElement(By.xpath("//span[@data-loc='SteamOS + Linux']"));
+        String criteriaOfCheck = element.getAttribute("className");
+
+        Assert.assertEquals(criteriaOfCheck, "tab_filter_control tab_filter_control_include  checked");
+ //step4
+        pageSearchResult.selectCheckBoxPlayerAmount();
+
+        //step5
+        pageSearchResult.selecCheckboxTags();
 
     }
 
