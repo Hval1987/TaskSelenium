@@ -15,6 +15,8 @@ import page.PageSearchResult;
 import page.PageStart;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestCase1 {
     WebDriver driver;
@@ -33,7 +35,7 @@ public class TestCase1 {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         pageStart = new PageStart(driver);
         pageAbout = new PageAbout(driver);
@@ -88,12 +90,29 @@ public class TestCase1 {
         Assert.assertEquals(criteriaOfCheck, "tab_filter_control tab_filter_control_include  checked");
  //step4
         pageSearchResult.selectHideCheckBoxPlayerAmount();
-//
-//        //step5
-//        //pageSearchResult.inputSuggestionTag();
-//        WebElement element1=driver.findElement(By.xpath("//input[@id='TagSuggest']"));
-//
-//        //pageSearchResult.selectCheckboxTags();
+
+        //step5
+        pageSearchResult.inputSuggestionTag();
+
+
+        pageSearchResult.selectCheckboxTags();
+
+        //step6
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //step7
+        List<WebElement> list=pageSearchResult.getListFindedGames();
+        System.out.println(list.size());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        list.get(0).click();
+
 
     }
 

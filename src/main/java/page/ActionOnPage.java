@@ -12,11 +12,7 @@ public class ActionOnPage {
     public static void inputForm(WebElement element, String suggestion) {
         element.clear();
         element.sendKeys(suggestion, Keys.ENTER);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 
 

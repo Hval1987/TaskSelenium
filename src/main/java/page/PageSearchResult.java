@@ -11,9 +11,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PageSearchResult {
     WebDriver driver;
+    List<WebElement> list=new ArrayList<>();
 
     public PageSearchResult(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -30,6 +35,8 @@ public class PageSearchResult {
 
     @FindBy(xpath="//input[@id='TagSuggest']")
     private WebElement inputTagSuggest;
+
+
 
 
 
@@ -56,5 +63,17 @@ public class PageSearchResult {
         ActionOnPage.selectItem(checkboxTags);
 
     }
+    public List<WebElement> getListFindedGames(){
+        list=driver.findElements(By.xpath("//div[@class='responsive_search_name_combined']"));
+        return list;
+
+    }
+     public Map<String,String> getGameAttributes(int indexOfGame){
+        Map<String,String> gameInfo=new HashMap<>();
+       getListFindedGames().get(indexOfGame);
+       //распарсим атрибуты
+         return null;
+
+     }
 
 }
