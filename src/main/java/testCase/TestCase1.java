@@ -11,14 +11,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import page.PageAbout;
-import page.PageHeader;
-import page.PageSearchResult;
-import page.PageStart;
+import page.extendPage.PageAbout;
+import page.extendPage.PageHeader;
+import page.extendPage.PageSearchResult;
+import page.extendPage.PageStart;
 import util.RegExParser;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestCase1 {
