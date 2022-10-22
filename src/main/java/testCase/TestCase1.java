@@ -1,21 +1,26 @@
 package testCase;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+<<<<<<< HEAD
 import page.extendPage.PageAbout;
 import page.extendPage.PageHeader;
 import page.extendPage.PageSearchResult;
 import page.extendPage.PageStart;
 import util.RegExParser;
+=======
+import page.PageAbout;
+import page.PageHeader;
+import page.PageSearchResult;
+import page.PageStart;
+>>>>>>> parent of 81b987a (some changes)
 
 import java.time.Duration;
 import java.util.List;
@@ -53,13 +58,11 @@ public class TestCase1 {
         // driver.quit();
     }
 
-   // @Test(groups = {"Test1"})
+    //  @Test(groups = {"Test1"})
     public void Test1() {
-
 
 //step1
         driver.get("https://store.steampowered.com ");
-
 //step2
         pageStart.clickButtonABOUT();
         System.out.println("test run");
@@ -79,70 +82,45 @@ public class TestCase1 {
 
     @Test(groups = {"Test2"})
     public void Test2() {
+        //step1
+        driver.get("https://store.steampowered.com ");
+        pageHeader.hoverCursorToNew();
+
+        //step2
+        pageHeader.selectTopSellers();
+
+        //step3
+        pageSearchResult.selectCheckboxOS();
+        WebElement element = driver.findElement(By.xpath("//span[@data-loc='SteamOS + Linux']"));
+        String criteriaOfCheck = element.getAttribute("className");
+
+        Assert.assertEquals(criteriaOfCheck, "tab_filter_control tab_filter_control_include  checked");
+ //step4
+        pageSearchResult.selectHideCheckBoxPlayerAmount();
+
+        //step5
+        pageSearchResult.inputSuggestionTag();
+
+
+        pageSearchResult.selectCheckboxTags();
+
+        //step6
         try {
-            //step1
-            driver.get("https://store.steampowered.com ");
-            pageHeader.hoverCursorToNew();
-
-            //step2
-            pageHeader.selectTopSellers();
-
-            //step3
-            pageSearchResult.selectCheckboxOS();
-            WebElement element = driver.findElement(By.xpath("//span[@data-loc='SteamOS + Linux']"));
-            String criteriaOfCheck = element.getAttribute("className");
-
-            Assert.assertEquals(criteriaOfCheck, "tab_filter_control tab_filter_control_include  checked");
-            //step4
-            pageSearchResult.selectHideCheckBoxPlayerAmount();
-
-
-            //step5
-            pageSearchResult.inputSuggestionTag();
-
-
-            pageSearchResult.selectCheckboxTags();
-            Thread.sleep(3000);
-            WebElement element1 = driver.findElement(By.xpath("//div[@data-loc='Экшен']"));
-            String criteria = element.getDomAttribute("class");
-            String searchResultCount=driver.findElement(By.xpath("//div[@class='search_results_count']")).getText();
-            System.out.println(searchResultCount);
-
-            Long count=Long.parseLong(RegExParser.getTegTextValue(searchResultCount));
-            System.out.println(count);
-
-
-            Assert.assertEquals(criteria, "tab_filter_control tab_filter_control_include  checked");
-
-
-            //step6
-            Actions action=new Actions(driver);
-            action.sendKeys(Keys.PAGE_UP).perform();
-            Thread.sleep(3000);
-
-            String tittle = driver.findElement(By.xpath("//a[@class='search_result_row ds_collapse_flag  app_impression_tracked'][1]//span[@class='title']")).getText().trim();
-            System.out.println(tittle);
-
-            String releaseDate=driver.findElement(By.xpath("//a[@class='search_result_row ds_collapse_flag  app_impression_tracked'][1]//div[@class='col search_released responsive_secondrow']"))
-                    .getText().trim();
-            System.out.println(releaseDate);
-//            String totalPrice=driver.findElement(By.xpath("//a[@class='search_result_row ds_collapse_flag  app_impression_tracked'][1]//div[contains(@class,'price discounted')]/text()[2]")).getAttribute("data");
-//            System.out.println(totalPrice);
-
-            //step7
-            List<WebElement> list = pageSearchResult.getListFindedGames();
-                Thread.sleep(2000);
-
-            list.get(0).click();
             Thread.sleep(2000);
-            String tittle2=driver.findElement(By.xpath("//div[@id='appHubAppName']")).getText().trim();
-
-            Assert.assertEquals(tittle,tittle2);
-
-
-        }catch (Exception ex){
-        ex.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        //step7
+        List<WebElement> list=pageSearchResult.getListFindedGames();
+        System.out.println(list.size());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        list.get(0).click();
+
+
     }
 
 }

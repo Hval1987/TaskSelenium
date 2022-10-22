@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test name="Test1">
+    <test verbose="2" preserve-order="true" name="D:/Java course/Task1_Selenium">
         <groups>
             <run>
-                <include name="Test1"/>
+                <include name="Test2"/>
             </run>
         </groups>
-
 
         <classes>
             <class name="testCase.TestCase1">
