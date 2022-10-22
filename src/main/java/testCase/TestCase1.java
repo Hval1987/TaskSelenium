@@ -20,6 +20,9 @@ import page.PageAbout;
 import page.PageHeader;
 import page.PageSearchResult;
 import page.PageStart;
+<<<<<<< HEAD
+>>>>>>> parent of 81b987a (some changes)
+=======
 >>>>>>> parent of 81b987a (some changes)
 
 import java.time.Duration;
