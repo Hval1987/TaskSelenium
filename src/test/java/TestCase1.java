@@ -1,5 +1,3 @@
-package testCase;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,21 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-<<<<<<< HEAD
 import page.extendPage.PageAbout;
 import page.extendPage.PageHeader;
 import page.extendPage.PageSearchResult;
 import page.extendPage.PageStart;
-import util.RegExParser;
-=======
-import page.PageAbout;
-import page.PageHeader;
-import page.PageSearchResult;
-import page.PageStart;
-<<<<<<< HEAD
->>>>>>> parent of 81b987a (some changes)
-=======
->>>>>>> parent of 81b987a (some changes)
+
+
 
 import java.time.Duration;
 import java.util.List;
