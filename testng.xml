@@ -9,7 +9,7 @@
         </groups>
 
         <classes>
-            <class name="TestCase1">
+            <class name="testCase.TestCase1">
                 
             </class>
         </classes>

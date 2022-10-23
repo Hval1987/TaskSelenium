@@ -1,26 +1,25 @@
-package page.extendPage;
+package util;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.FindBy;
-import page.PageBasic;
 
+public class DriverFactory {
+    final DriverFactory driverFactory=getInstanse();
 
-public class PageStart extends PageBasic {
-    
-    public PageStart(WebDriver driver) {
-        super(driver);
+    public DriverFactory getInstanse() {
+        return new DriverFactory();
     }
 
-    public WebDriver initWebDriver() {
+    private DriverFactory() {
+    }
+
+    public static WebDriver initWebDriver() {
         WebDriver driver = null;
         if(true){
             ChromeOptions options = new ChromeOptions();
             options.addArguments("-private");
         }
-
 
         switch ("chrome") {
             case "chrome":
@@ -34,20 +33,6 @@ public class PageStart extends PageBasic {
         }
         return driver;
     }
-
-
-    @FindBy(xpath="//*[@id='global_header']/div/div[2]/a[3]")
-    private WebElement buttonAbout;
-
-    public void clickButtonABOUT(){
-//        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='global_header']/div/div[2]/a[3]")));
-        buttonAbout.click();
-    }
-
-
-
-
 
 
 }
